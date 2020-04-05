@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+
+{% block body %}
+	<div class="container mt-5">
+		<h1 class="text-center">Airbean</h1>
+		<form>
+			<div>où voulez vous aller?</div>
+			<input></input>
+	</form>
+	<div class="row">
+		{% for country in countries %}
+
+			<div class="container-website element col-md-4  mt-3">
+				<div class="card ">
+					<div class="card-header">
+						<h3>{{country.name}}</h3>
+					</div>
+					<div class="card-body">
+						<img src="images/global/{{country.picture.name}}" style="width:100%"/>
+						<div>
+							{{country.description}}</div>
+					</div>
+					<a href="{{path('custom_show', {name: country.name}) }}" class="card-footer">Voir la fiche</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>{% endblock %}

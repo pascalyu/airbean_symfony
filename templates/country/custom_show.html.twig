@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Country
+{% endblock %}
+
+{% block body %}
+	<h1 class="mt-5">{{ country.name }}</h1>
+	<div class="w-50 mt-5 center">
+		<img class="fit_picture border" src="/images/global/{{country.picture.name}}"/>
+	</div>
+
+	<h6 class="mt-5">{{ country.description }}</h6>
+	<h5 class="mt-5">Ses Villes :</h5>
+	<div class="row">
+		{% for city in cities %}
+			<div class="element col-md-4  mt-3">
+				<div class="card ">
+					<div class="card-header">
+						<h3>{{city.name}}</h3>
+					</div>
+					<div class="card-body">
+						<div>
+							<img class="fit_picture border" src="/images/global/{{city.onePicture.name}}"/>
+						</div>
+						<div>
+							{{city.description}}
+						</div>
+					</div>
+					<a href="{{path('custom_show_city', {name: city.name}) }}" class="card-footer">Voir la fiche</a>
+				</div>
+			</div>
+		{% endfor %}
+
+	</div>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="text-center" style=" width:200px">
+			<img class="border border-secondary fit_picture img-fluid" style="max-width:100%" src="/images/properties/{{property.picture}}"/>
+		</div>
+		<hr/>
+		<div class="row">
+
+			<div class="col-md-8">
+
+				<h5 style="text-align:center">Détail du logement</h5>
+				<h6 class="mt-3">
+					{{property.description}}
+				</h6>
+				<hr/>
+				<div class="row mt-3">
+					<div class="col-md-2">
+						<span>{{property.roomNbr}}
+						</span>
+						Chambres
+					</div>
+					<div class="col-md-2">
+						<span>{{property.bedSmallNbr + property.bedBigNbr}}
+						</span>
+						Lits
+					</div>
+				</div>
+				<hr/>
+				<div>
+					Adresse :
+					<address>{{property.fullAddress}}</address>
+				</div>
+			</div>
+			<div class="border col-md-4">
+				<h5 style="text-align:center">Je voyage</h5>
+
+				<div class="js-datepicker input-daterange"></div>
+				{{ form_start(rentForm) }}
+				<div class="">
+
+					{{ form_label(rentForm.startDateAt, 'Début') }}
+					<i class="fa fa-calendar"></i>
+					{{ form_widget(rentForm.startDateAt) }}
+
+
+				</div>
+
+				<div class="">
+
+					{{ form_label(rentForm.endDateAt, 'Fin') }}
+					<i class="fa fa-calendar"></i>
+					{{ form_widget(rentForm.endDateAt) }}
+
+				</div>
+				<hr/>
+				{{form_row(rentForm.personNbr)}}
+				<hr/>
+				<div id="price-block">
+					<div>Prix par jours :
+						<span id="price-per-day">
+							{{property.pricePerDay}}</span>
+						euros<span class="informative_price" style="color:grey">
+							x
+							<span id="person-nbr">1</span>
+							=
+							<span id="price-all-persons">{{property.pricePerDay}}</span>
+							euros</span>
+					</div>
+					<h4>Prix Total :
+						<u>
+							<span id="total-price"></span>
+							euros
+						</u>
+					</h4>
+				</div>
+				<hr/>
+				<button type="submit" class=" form-control btn btn-primary">Payer</button>
+				{{ form_end(rentForm) }}
+			</div>
+		</div>
+
+
+	</div>
+{% endblock %}

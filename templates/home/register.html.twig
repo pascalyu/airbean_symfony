@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div  >
+        {{ form_start(userForm) }}
+        <h2 class="text-center">Subscribe</h2>
+        <div class="form-group ">
+            {{ form_row(userForm.email,{'attr':{'placeholder':"ex: piggy@pigmail.^com" ,'class' :'form-control'}}) }}
+        </div>
+        <div class="form-group ">
+            {{ form_row(userForm.password.first,{'attr':{'placeholder':"omg" ,'class' :'form-control'}}) }}
+        </div>
+        <div class="form-group ">
+            {{ form_row(userForm.password.second,{'attr':{'placeholder':"omg" ,'class' :'form-control'}}) }}
+        </div>
+        <div class="form-group row " >
+                <a href="{{path('app_login')}}" class="col-md-6 no-padding-right">Already subscribed?
+                </a>
+            </div>    
+        <div class="form-group text-center">
+            <button class="form-control btn btn-primary">Subscribe !</button>
+        </div>
+
+        {{ form_end(userForm) }}
+    </div>
+
+{% endblock %}

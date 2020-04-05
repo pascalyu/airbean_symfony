@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}
+				Welcome!
+			{% endblock %}
+		</title>
+		{% block stylesheet %}
+			<link rel="stylesheet" href="{{ asset('build/app.css') }}">
+			<link rel="stylesheet" href="{{ asset('build/vendors~app.css') }}">
+		{% endblock %}
+	</head>
+	<body>
+		{% include "header.html.twig" %}
+		<div class="container mb-5"> {% block body %}{% endblock %}
+			</div>
+
+
+			{% include "footer.html.twig" %}
+		</body>
+		{% block javascripts %}
+
+			{{ encore_entry_script_tags('app') }}
+
+		{% endblock %}
+	</html>

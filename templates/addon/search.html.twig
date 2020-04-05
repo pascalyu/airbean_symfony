@@ -1,0 +1,12 @@
+<form action="{{path('search_bar')}}"style="width: 50%;text-align:center" class=""  method="post">
+
+	<select id="search-select2"  multiple class="search-select2" style="width: inherit" name="country[]">
+		{% for country in countries %}
+			<option value="{{country.name}}">{{country.name}}</option>
+		{% endfor %}
+
+	</select>
+
+
+	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">rechercher</button>
+</form>

@@ -1,0 +1,56 @@
+<style>
+	a:hover {
+
+		text-decoration: none;
+	}
+</style>
+
+<nav class="navbar navbar-expand-lg">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a href="{{ path('home') }}" class="navbar-brand">
+				<i class="fas fa-home"></i>Airbean</a>
+		</div>
+		{{ render(controller(
+        'App\\Controller\\HomeController::searchbarRender'
+   		 )) }}
+
+
+		{% if app.user %}
+			<ul class="nav navbar-nav">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Mon compte
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+						<a class="dropdown-item" href="#">Mes voyages</a>
+						<a class="dropdown-item" href="#">Paramètre</a>
+
+
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="{{path("property_index")}}">Gérer mes biens</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Deconnexion</a>
+					</div>
+				</li>
+			</ul>
+		{% else %}
+			<ul class="nav navbar-nav">
+				<li class="">
+					<a href="{{ path('register')}}">Inscription
+					</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav">
+				<li class="">
+					<a href="{{ path('app_login')}}">Login</a>
+				</li>
+			</ul>
+		{% endif %}
+
+
+	</div>
+</nav>
+
+<div class="container alerts"></div>

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}City
+{% endblock %}
+
+{% block body %}
+	<h1 class="mt-5">{{city.name}}</h1>
+	<div class="w-50 mt-5">
+		<img class="fit_picture border" src="/images/global/{{city.onePicture.name}}"/>
+	</div>
+	<div class="row mt-5">
+		<div class="col-md-6">
+			{% for property in properties %}
+				<div class="element ">
+					<div class="card ">
+						<div class="card-header">
+							<span>
+								<h6>Prix
+									{{property.price_per_day}}
+									€/J</h6>
+								<a href="{{path('property_show_custom', {id: property.id}) }}">Détail
+								</a>
+								
+							</span>
+						</div>
+
+						<div class="card-body" style="width:200px">
+
+							<img class="fit_picture border" src="/images/properties/{{property.picture}}"/>
+
+						</div>
+
+					</div>
+				</div>
+			{% endfor %}
+		</Div>
+		<div class="col-md-6 border"></div>
+	</div>
+{% endblock %}
