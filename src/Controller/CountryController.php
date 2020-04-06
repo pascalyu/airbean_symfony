@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Vich\UploaderBundle\Entity\File;
 
 /**
@@ -20,6 +21,8 @@ class CountryController extends AbstractController
 {
     /**
      * @Route("/", name="country_index", methods={"GET"})
+     * 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(CountryRepository $countryRepository): Response
     {
@@ -30,6 +33,8 @@ class CountryController extends AbstractController
 
     /**
      * @Route("/new", name="country_new", methods={"GET","POST"})
+     * 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -92,6 +97,7 @@ class CountryController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="country_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Country $country): Response
     {
@@ -130,6 +136,7 @@ class CountryController extends AbstractController
 
     /**
      * @Route("/{id}", name="country_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Country $country): Response
     {
