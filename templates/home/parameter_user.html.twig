@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div>
+		{{ form_start(userForm) }}
+		<h2 class="text-center">Paramètre Utilisateur</h2>
+		<div class="form-group ">
+			{{ form_row(userForm.email,{'attr':{'placeholder':"ex: piggy@yopmail.com" ,'class' :'form-control'}}) }}
+		</div>
+		<div>
+			<h6>Changer de mot de passe</h6>
+			<div class="form-group ">
+				{{ form_row(userForm.password.first,{'attr':{'placeholder':"" ,'class' :'form-control'}}) }}
+			</div>
+			<div class="form-group ">
+				{{ form_row(userForm.password.second,{'attr':{'placeholder':"" ,'class' :'form-control'}}) }}
+			</div>
+		</div>
+
+		<div class="form-group text-center">
+			<button class="form-control btn btn-primary">Valider</button>
+		</div>
+
+		{{ form_end(userForm) }}
+	</div>
+
+{% endblock %}

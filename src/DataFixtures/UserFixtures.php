@@ -8,9 +8,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class UserFixtures extends Fixture
 {
-
-
-
     public function load(ObjectManager $objectManager)
     {
         for ($i = 0; $i < 10; $i++) {

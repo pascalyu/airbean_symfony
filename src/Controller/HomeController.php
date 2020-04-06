@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\ParameterUserType;
 use App\Form\SearchType;
 use App\Form\SubscribeType;
 use App\Repository\CountryRepository;
@@ -53,17 +54,11 @@ class HomeController extends AbstractController
             'userForm' => $form->createView(),
         ]);
     }
-
-
     /**
      * @Route("/searchbar", name="search_bar")
      */
     public function searchbarRender(CountryRepository $countryRepository, Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
-
-
-
-
         if ($request->getMethod() == Request::METHOD_POST) {
 
             $country = $request->request->get('country');
@@ -72,6 +67,25 @@ class HomeController extends AbstractController
         }
         return $this->render('addon/search.html.twig', [
             'countries' => $countryRepository->findAll(),
+        ]);
+    }
+    /**
+     * @Route("/parameter", name="parameter_user")
+     */
+    public function parameterUser(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
+    {
+        $user = $this->getUser();
+        $form = $this->createForm(ParameterUserType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $hash = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($hash);
+            $manager->persist($user);
+            $manager->flush();
+        }
+        return $this->render('home/parameter_user.html.twig', [
+            'userForm' => $form->createView(),
         ]);
     }
 }
