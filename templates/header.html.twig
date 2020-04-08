@@ -17,6 +17,9 @@
 
 
 		{% if app.user %}
+			{% if is_granted('ROLE_ADMIN') %}
+				<a href="{{path("dashboard_admin")}}">Dashboard Admin</a>
+			{% endif %}
 			<ul class="nav navbar-nav">
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -24,7 +27,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-						<a class="dropdown-item" href="#">Mes voyages</a>
+						<a class="dropdown-item" href="{{path('rent_index')}}">Mes voyages</a>
 						<a class="dropdown-item" href="{{path('parameter_user')}}">Paramètre</a>
 
 

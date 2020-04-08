@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rent index
+{% endblock %}
+
+{% block body %}
+	<h1>Mes voyages à venir</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Début</th>
+				<th>Fin</th>
+				<th>Prix</th>
+				<th>Payé</th>
+				<th>Nombre de personnes</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for rent in rents %}
+				<tr>
+					<td>{{ rent.startDateAt ? rent.startDateAt|date('Y-m-d') : '' }}</td>
+					<td>{{ rent.endDateAt ? rent.endDateAt|date('Y-m-d') : '' }}</td>
+					<td>{{ rent.price }} euros</td>
+					<td>{{ rent.paid ? 'Oui' : 'Non' }}</td>
+					<td>{{ rent.personNbr }}</td>
+					<td>
+						<a href="{{ path('rent_show', {'id': rent.id}) }}">show</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="7">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

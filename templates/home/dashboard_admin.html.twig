@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard admin
+{% endblock %}
+
+
+{% block body %}
+	<div class="container mt-5">
+		<h1 class="text-center">Dashboard Admin</h1>
+
+		<div class="container-website element row mt-3">
+			{% for dashboardcard in dashboardList %}
+				<div class="col-md-4">
+					<div class="card border m-1">
+						<div class="card-header">
+							{{dashboardcard.title}}
+						</div>
+						<div class="card-body">
+							<a href="{{path(dashboardcard.path)}}" class="card-footer">{{dashboardcard.path_name}}</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
